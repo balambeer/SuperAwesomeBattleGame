@@ -23,6 +23,17 @@ public class BattleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_battle);
         TableLayout map = (TableLayout) findViewById( R.id.batlleMap );
 
+        // Andris:
+        // Good idea, but doesn't work with custom screen sizes.
+        // Besides, depending on the map size, you would have
+        // too many individual onClickListeners
+
+
+        // Google ListViews, Custom ArrayAdapters, and how to
+        // have a custom sized GridView layout for your ListView.
+        // ListViews have one central method for handling when
+        // an item is clicked.
+
         for(int row = 1; row <= numRows; row++) {
             TableRow newRow = new TableRow(this );
             for(int col = 1; col <= numCols; col++) {
@@ -33,6 +44,10 @@ public class BattleActivity extends AppCompatActivity {
             map.addView(newRow);
         }
     }
+
+    // Andris:
+    // Protip: Instead of Integer.toString, just concatenate it to an
+    // empty string. e.g. "" + row + col. Easier on the eyes.
 
     private void setupCell (Button cell, int row, int col) {
         cell.setWidth((int) getResources().getDimension(R.dimen.button_size));
