@@ -6,7 +6,7 @@
         android:height="10dp"
         android:defaultValue="small"
         android:key="map_size"
-        android:title="Large Map"/>
+        android:title="Map size" />
 
 
 </PreferenceScreen>

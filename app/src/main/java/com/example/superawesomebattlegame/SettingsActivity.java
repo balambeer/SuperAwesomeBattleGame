@@ -46,9 +46,11 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-            String stringValue = newValue.toString();
-            preference.setSummary(stringValue);
-
+            if (newValue.toString().equals("true")){
+                preference.setSummary("Large map");
+            } else {
+                preference.setSummary("Regular map");
+            }
             return true;
         }
         }
