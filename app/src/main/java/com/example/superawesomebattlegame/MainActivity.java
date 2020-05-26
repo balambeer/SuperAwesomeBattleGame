@@ -4,22 +4,41 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private boolean mapSettings = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public void startGame(View startButton) {
-        Intent szar = new Intent(this, BattleActivity.class);
-        startActivity(szar);
+        // Here we get back the settings
+        // the user made on the the Settings screen
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        mapSettings = sp.getBoolean("map_size", false);
+
+        //TODO: You can place values in intents with keys. Pass the
+        // boolean value over to the BattleActivity, and use it there
+        // to load the appropriate map layout.
+
+        Button startButton = (Button) findViewById(R.id.start_game);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BattleActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
