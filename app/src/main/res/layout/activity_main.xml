@@ -36,7 +36,6 @@
        	android:layout_marginBottom="72dp"
         android:padding="16dp"
         android:textSize="32sp"
-        android:text="To battle!"
-		android:onClick="startGame"/>
+        android:text="To battle!" />
 
 </RelativeLayout>

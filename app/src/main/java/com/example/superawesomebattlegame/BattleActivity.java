@@ -23,7 +23,6 @@ public class BattleActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
-
         ArrayList<String> mapCells = new ArrayList<String>();
         for(int row = 1; row <= numRows; row++) {
             for(int col = 1; col <= numCols; col++) {
