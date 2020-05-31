@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,34 +23,18 @@ public class BattleActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
-        TableLayout map = (TableLayout) findViewById( R.id.batlleMap );
 
+        ArrayList<String> mapCells = new ArrayList<String>();
         for(int row = 1; row <= numRows; row++) {
-            TableRow newRow = new TableRow(this );
             for(int col = 1; col <= numCols; col++) {
-                Button cell = new Button(this );
-                setupCell(cell, row, col);
-                newRow.addView(cell);
+                mapCells.add(""+row+col);
             }
-            map.addView(newRow);
         }
-    }
 
-    private void setupCell (Button cell, int row, int col) {
-        cell.setWidth((int) getResources().getDimension(R.dimen.button_size));
-        cell.setHeight((int) getResources().getDimension(R.dimen.button_size));
-        cell.setText(Integer.toString(row)+Integer.toString(col));
-        cell.setId(10*row+col);
-        cell.setOnClickListener(new View.OnClickListener () {
-            @Override
-            public void onClick(View button) {
-                doStuff(button.getId());
-            }
-        });
-    }
+        ArrayAdapter<String> mapAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mapCells);
 
-    private void doStuff (int buttonID) {
-        TextView response = (TextView) findViewById(R.id.buttonResponse);
-        response.setText(Integer.toString(buttonID));
+        GridView map = (GridView) findViewById(R.id.battleMap);
+        map.setNumColumns(numCols);
+        map.setAdapter(mapAdapter);
     }
 }

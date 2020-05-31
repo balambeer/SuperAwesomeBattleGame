@@ -11,10 +11,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TableLayout
-            android:id="@+id/batlleMap"
+        <GridView
+            android:id="@+id/battleMap"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent" />
+            android:layout_width="fill_parent"
+            android:numColumns="4" />
 
         <TextView
             android:id="@+id/buttonResponse"
